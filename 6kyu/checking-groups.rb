@@ -25,7 +25,6 @@
 # It should return True if the string is empty or otherwise grouped correctly,
 # or False if it is grouped incorrectly.
 
-require 'pry'
 def group_check(s)
   #your code here
   if s.empty?
@@ -47,14 +46,8 @@ def group_check(s)
       elsif s[index] == "("
         new_string.insert(location,"()")
       end
-      binding.pry
     end
 
     s == new_string
   end
 end
-
-group_check("[]{}]{[}")
-# group_check("{}([])")
-# group_check("{[{}[]()[]{}{}{}{}{}{}()()()()()()()()]{{{[[[((()))]]]}}}}(())[[]]{{}}[][][][][][][]({[]})")
-# group_check("")
