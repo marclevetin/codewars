@@ -1,4 +1,4 @@
-
+# https://www.codewars.com/kata/54bf1c2cd5b56cc47f0007a1
 
 # Count the number of Duplicates
 #
@@ -23,19 +23,22 @@
 # Test.assert_equals(duplicate_count("abcdeaB"), 2)
 # Test.assert_equals(duplicate_count("Indivisibilities"), 2)
 
+require 'pry'
 
 def duplicate_count(text)
     #your code here
     text = text.downcase
     array = text.split("")
     duplicates = []
+
     array.each do |letter|
       count = text.count letter
-      if count > 1
+      if count > 1 && !duplicates.include?(letter)
         duplicates << letter
-        array.delete(letter)
       end
     end
 
     duplicates.size
 end
+
+duplicate_count("abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz")
