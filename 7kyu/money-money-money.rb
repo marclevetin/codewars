@@ -32,3 +32,14 @@
 # Assumptions : Assume that Desired Principal 'D' is always greater than the
 # initial principal, however it is best to take into consideration that if the
 # Desired Principal 'D' is equal to Principal 'P' this should return 0 Years.
+
+def calculate_years(principal, interest, tax, desired)
+  years = 0
+  while principal < desired do
+    taxable = (principal * interest) * (1 - tax)
+    principal = principal + taxable
+    years += 1
+  end
+
+  years
+end
