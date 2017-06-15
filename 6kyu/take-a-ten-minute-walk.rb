@@ -23,4 +23,9 @@
 
 def isValidWalk(walk)
   #your code here
+  if walk.count("n")== walk.count("s") && walk.count("e")==walk.count("w") && walk.size == 10
+    true
+  else
+    false
+  end
 end
