@@ -42,3 +42,23 @@
 # Good luck!
 #
 # After you complete this kata, you may try yourself at Decode the Morse code, advanced.
+
+
+def decodeMorse(morseCode)
+  message = morseCode.split("   ")
+  complete_message = ""
+
+  message.each do |word|
+    letters = word.split(" ")
+    complete_word = ""
+
+    letters.each do |letter|
+      translated_letter = MORSE_CODE[letter]
+      complete_word += translated_letter
+    end
+
+    complete_message += complete_word + " "
+  end
+
+  complete_message.strip
+end
