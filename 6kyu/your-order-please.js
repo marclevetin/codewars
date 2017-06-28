@@ -12,13 +12,28 @@
 // T4est"
 
 function order(words){
-  array = words.split("")
-  sortedArray = []
-  for (var i = 0; i < array.length; i++) {
-    let word = array[i]
-    let sortedWord = word.sort()
-    let sortOrder = sortedWord[0]
-    sortedArray.splice(sortOrder,0,word)
+  if (words == false) {
+    return ""
+  } else {
+    array = words.split(" ")
+    sortedArray = []
+    for (var i = 0; i < array.length; i++) {
+      let word = array[i]
+      let sortedWord = word.split("").sort()
+      let sortOrder = sortedWord[0]
+      word = sortOrder + word
+      sortedArray.splice(sortOrder,0,word)
+    }
+
+    sortedArray = sortedArray.sort()
+    finalArray = []
+    for (var i = 0; i < sortedArray.length; i++) {
+      let word = sortedArray[i].split("")
+      word.splice(0,1)
+      word = word.join("")
+      finalArray.push(word)
+    }
   }
-  return sortedArray.join(" ")
+
+  return finalArray.join(" ")
 }
