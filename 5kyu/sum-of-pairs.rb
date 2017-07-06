@@ -42,17 +42,32 @@
 require 'pry'
 def sum_pairs(ints, s)
   pairs = []
+  # determine possible pairs
   ints.each_with_index do |first_number, index|
     second_number = s - first_number
-    second_number_index = ints.index {|i| i == second_number}
+    second_number_index = ints.index {|i| i == second_number && i > second_number_index}
     if second_number_index && index < second_number_index
       first_number_index = index
-      array = [first_number_index, second_number_index]
-      pairs << array
+      numbers_and_indicies = {first_number => first_number_index, second_number => second_number_index}
+      pairs << numbers_and_indicies
+    end
+    binding.pry
+  end
+
+  # determine earliest pair
+  if pairs.empty?
+    return nil
+  elsif pairs.size == 1
+    binding.pry
+    return pairs[0].keys
+  else
+    pairs.each_with_index do |pair, index|
+      binding.pry
+      if pair.key < pairs[index + 1].key
+      end
     end
   end
-binding.pry
-
 end
 
-sum_pairs([1, 4, 8, 7, 3, 15], 8)
+# sum_pairs([1, 4, 8, 7, 3, 15], 8)
+sum_pairs([4, 3, 2, 3, 4], 6)
