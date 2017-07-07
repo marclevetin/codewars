@@ -45,7 +45,13 @@ def sum_pairs(ints, s)
   # determine possible pairs
   ints.each_with_index do |first_number, index|
     second_number = s - first_number
-    second_number_index = ints.index {|i| i == second_number && i > second_number_index}
+    # determine correct second number index
+    if ints.count(second_number) == 1
+      second_number_index = ints.index {|i| i == second_number }
+    elsif ints.count(second_number) > 1
+
+    end
+
     if second_number_index && index < second_number_index
       first_number_index = index
       numbers_and_indicies = {first_number => first_number_index, second_number => second_number_index}
