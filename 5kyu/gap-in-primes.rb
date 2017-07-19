@@ -38,24 +38,47 @@
 #
 
 require 'prime'
-require 'pry'
+
 def gap(g, m, n)
-  #generate primes betwwn m and n
-  primes = []
-  m.upto(n) do |number|
-    if Prime.prime?(number)
-      primes << number
+  while m < n
+    if Prime.prime?(m)
+      next_number = m + 1
+      while next_number <= m + g
+        if Prime.prime?(next_number) && g == next_number - m
+          return [ m, next_number ]
+        elsif Prime.prime?(next_number) && g != next_number-m
+          break
+        end
+        next_number += 1
+      end
+      m += 1
+    else
+      m += 1
     end
   end
 
-  # mind the gap
-  primes.each_with_index do |number, index|
-    !primes[index + 1].nil? ? next_number = primes[index + 1] : next_number = 0
-    if next_number - number == g
-      return [number, next_number]
-    end
-  end
   return nil
 end
 
-gap(6,100,110)
+# Below was my original code.  It timed out and I had to optimize.
+# def gap(g, m, n)
+  # #generate primes betwwn m and n
+  # primes = []
+  # m.upto(n) do |number|
+  #   if Prime.prime?(number)
+  #     primes << number
+  #   end
+  # end
+  #
+  # # mind the gap
+  # primes.each_with_index do |number, index|
+  #   !primes[index + 1].nil? ? next_number = primes[index + 1] : next_number = 0
+  #   if next_number - number == g
+  #     return [number, next_number]
+  #   end
+  # end
+  # return nil
+# end
+
+#need to optimize for:
+# gap(2,10000000,11000000)
