@@ -1,0 +1,1 @@
+I have an account on codewars.com.  This github repo is a collection of all of my efforts.  I leave it up here so that folks can see the evolution of my coding skills (or lack thereof) without having to live github.
